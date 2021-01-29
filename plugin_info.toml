@@ -1,0 +1,17 @@
+## To modify by developper(s) of the plugin
+
+[plugin-info]
+SHORT_PLUGIN_NAME = 'femto'  #to be modified, for instance daqmx then rename the module name:
+# (pymodaq_plugins_template become pymodaq_plugins_daqmx for instance)
+
+package-url = 'https://github.com/CEMES-CNRS/pymodaq_plugins_femto' 
+description = 'Plugin to simulate acquisition from ultrashort pulse measurement device based on the pypret package'
+
+author = 'Sébastien Weber'
+author-email = 'sebastien.weber@cemes.fr'
+license = 'MIT'
+
+[plugin-install]
+#packages required for your plugin:
+packages-required = ['pypret',
+                     ]
