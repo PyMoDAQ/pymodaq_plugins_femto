@@ -66,7 +66,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
             self.update_pulse()
 
             intensity_t = lib.abs2(self.pulse.field)
-            intensity_w = intensity_t / np.max(intensity_t)
+            intensity_t = intensity_t / np.max(intensity_t)
             phaset = np.unwrap(np.angle(self.pulse.field))
             phaset -= lib.mean(phaset, intensity_t**2)
 
