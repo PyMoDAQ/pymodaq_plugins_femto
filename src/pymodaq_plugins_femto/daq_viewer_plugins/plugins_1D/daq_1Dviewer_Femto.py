@@ -172,16 +172,10 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
                      self.settings.child('spectro_settings', 'wl_max').value() * 1e-9
             Npts = self.settings.child('spectro_settings',
                                 'npoints_spectro').value()
-            md = self.controller.trace_exp(Npts=Npts, wl_lim=wl_lim)
+            data, axis, parameter_axis = self.controller.trace_exp(Npts=Npts, wl_lim=wl_lim)
             self.data_grabed_signal.emit([
-                DataFromPlugins(name='Full Trace',
-                                data=[md.data.T],
-                                dim='Data2D', labels=['NL trace'],
-                                x_axis=Axis(data=md.axes[0],
-                                            label=md.labels[0], units=md.units[0]),
-                                y_axis=Axis(data=md.axes[1],
-                                            label=md.labels[1], units=md.units[1])
-                                ),])
+                DataFromPlugins(name='Full Trace', data=[data.T], dim='Data2D', labels=['NL trace'],
+                                x_axis=parameter_axis, y_axis=axis)])
         else:
             if 'positions' in kwargs:
                 parameter = kwargs['positions'][0] * 1e-15
