@@ -16,7 +16,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
     params = comon_parameters + \
         [{'title': 'Simulation settings:', 'name': 'simul_settings', 'type': 'group',
             'children': [
-                {'title': 'Show Spectrum:', 'name': 'show_pulse_bool', 'type': 'bool'},
+                {'title': 'Show fund. spectrum:', 'name': 'show_pulse_bool', 'type': 'bool'},
                 {'title': 'Show Trace:', 'name': 'show_trace_bool', 'type': 'bool'},
             ] + Simulator.params}, ] + \
         [{'title': 'Spectrometer settings:', 'name': 'spectro_settings', 'type': 'group', 'children': [
@@ -30,7 +30,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
               'value': 512,
               'tip': 'Number of points of the spectrometer'},
         ]},
-         {'title': 'Parameter value:', 'name': 'param_val', 'type': 'float', 'value': 0,
+         {'title': 'Scanning device value:', 'name': 'param_val', 'type': 'float', 'value': 0,
           'tip': 'Particular value at which to compute the NonLinear response and emit the spectrum'},
          ]
 
