@@ -20,9 +20,9 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
                 {'title': 'Show Trace:', 'name': 'show_trace_bool', 'type': 'bool'},
             ] + Simulator.params}, ] + \
         [{'title': 'Spectrometer settings:', 'name': 'spectro_settings', 'type': 'group', 'children': [
-             {'title': 'Min Wavelength (nm):', 'name': 'wl_min', 'type': 'float', 'value': 500,
+             {'title': 'Min Wavelength (nm):', 'name': 'wl_min', 'type': 'float', 'value': 250,
               'tip': 'Minimal Wavelength of the virtual spectrometer'},
-             {'title': 'Max Wavelength (nm):', 'name': 'wl_max', 'type': 'float', 'value': 1100,
+             {'title': 'Max Wavelength (nm):', 'name': 'wl_max', 'type': 'float', 'value': 550,
               'tip': 'Minimal Wavelength of the virtual spectrometer'},
 
              {'title': 'Npoints:', 'name': 'npoints_spectro', 'type': 'list',
