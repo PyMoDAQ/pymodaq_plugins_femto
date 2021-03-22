@@ -150,9 +150,9 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
             wl_lim = self.settings.child('spectro_settings', 'wl_min').value() * 1e-9, \
                      self.settings.child('spectro_settings', 'wl_max').value() * 1e-9
             wl = convert(w + self.controller.pulse.w0, "om", "wl")
-            spectrum = normalize(self.controller.pulse.spectrum * wl**2)
+            spectrum = self.controller.pulse.spectrum * wl**2
             intensity_w = lib.abs2(spectrum)
-            intensity_w = intensity_w / np.max(intensity_w)
+            intensity_w = normalize(intensity_w)
             wlc, intensity_croped = crop_vector_to_axis(wl[::-1], intensity_w[::-1], wl_lim)
             wlc_lin, intensity_lin = linspace_this_vect(wlc, intensity_croped,
                                                        self.settings.child('spectro_settings',
