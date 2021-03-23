@@ -19,6 +19,6 @@ class DAQ_Move_WedgeInsertion(DAQ_Move_MockTau):
 
     def __init__(self, parent=None, params_state=None):
         super().__init__(parent, params_state)
-        self.setting.child('tau').setValue(20)
+        self.settings.child('tau').setValue(20)
 
 
