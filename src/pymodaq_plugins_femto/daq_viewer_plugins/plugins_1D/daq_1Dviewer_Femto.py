@@ -19,7 +19,9 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
                 {'title': 'Show fund. spectrum:', 'name': 'show_pulse_bool', 'type': 'bool'},
                 {'title': 'Show Trace:', 'name': 'show_trace_bool', 'type': 'bool'},
             ] + Simulator.params}, ] + \
-        [{'title': 'Spectrometer settings:', 'name': 'spectro_settings', 'type': 'group', 'children': [
+        [{'title': 'Noise amplitude:', 'name': 'noise', 'type': 'float', 'value': 0.01,
+              'tip': 'Amplitude of random noise'},
+        {'title': 'Spectrometer settings:', 'name': 'spectro_settings', 'type': 'group', 'children': [
              {'title': 'Min Wavelength (nm):', 'name': 'wl_min', 'type': 'float', 'value': 250,
               'tip': 'Minimal Wavelength of the virtual spectrometer'},
              {'title': 'Max Wavelength (nm):', 'name': 'wl_max', 'type': 'float', 'value': 550,
@@ -114,7 +116,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
             self.emit_x_axis()
             self.update_spectro()
             self.controller.update_pnps()
-
+            self.settings.child('simul_settings', 'pulse_settings', 'gaussian_phase').show()
             ##############################
 
             self.status.info = "Your Python for pulse retrieval PyMoDAQ plugin is ready"
@@ -177,7 +179,10 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
                                 x_axis=parameter_axis, y_axis=axis)])
         else:
             if 'positions' in kwargs:
-                parameter = kwargs['positions'][0] * 1e-15
+                if self.settings.child('simul_settings', 'algo', 'method').value() == 'frog':
+                    parameter = kwargs['positions'][0] * 1e-15
+                else:
+                    parameter = kwargs['positions'][0] * 1e-3
             else:
                 parameter = self.settings.child('param_val').value()
             self.controller.pnps.calculate(self.controller.pulse.spectrum, parameter)
@@ -185,6 +190,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
                              np.flip(self.controller.pnps.process_wl * 1e9),
                              np.flip(self.controller.pnps.Tmn / self.controller.max_pnps))
 
+            data += self.settings.child('noise').value() * np.random.rand(*data.shape)
             self.data_grabed_signal.emit([
                 DataFromPlugins(name='PNPS',
                                 data=[data],
