@@ -28,7 +28,7 @@ class DAQ_1DViewer_Femto(DAQ_Viewer_base):
               'tip': 'Minimal Wavelength of the virtual spectrometer'},
 
              {'title': 'Npoints:', 'name': 'npoints_spectro', 'type': 'list',
-              'values': [2 ** n for n in range(8, 16)],
+              'limits': [2 ** n for n in range(8, 16)],
               'value': 512,
               'tip': 'Number of points of the spectrometer'},
         ]},
