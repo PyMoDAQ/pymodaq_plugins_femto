@@ -9,8 +9,8 @@ pymodaq_plugins_femto (Femto Characterization)
    :target: https://pymodaq.readthedocs.io/en/stable/?badge=latest
    :alt: Documentation Status
 
-.. image:: https://github.com/CEMES-CNRS/pymodaq_plugins_femto/workflows/Upload%20Python%20Package/badge.svg
-    :target: https://github.com/CEMES-CNRS/pymodaq_plugins_femto
+.. image:: https://github.com/PyMoDAQ/pymodaq_plugins_femto/workflows/Upload%20Python%20Package/badge.svg
+    :target: https://github.com/PyMoDAQ/pymodaq_plugins_femto
 
 Plugins wrapping the Pypret package to simulate femtosecond pulse characterization
 

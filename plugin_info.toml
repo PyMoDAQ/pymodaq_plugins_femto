@@ -4,7 +4,7 @@
 SHORT_PLUGIN_NAME = 'femto'  #to be modified, for instance daqmx then rename the module name:
 # (pymodaq_plugins_template become pymodaq_plugins_daqmx for instance)
 
-package-url = 'https://github.com/CEMES-CNRS/pymodaq_plugins_femto' 
+package-url = 'https://github.com/PyMoDAQ/pymodaq_plugins_femto' 
 description = 'Plugin to simulate acquisition from ultrashort pulse measurement device based on the pypret package'
 
 author = 'Sébastien Weber'
